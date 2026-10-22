@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e7f5ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Hydratation">
+  <meta name="description" content="Un compteur simple pour suivre tes verres d'eau chaque jour.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>Mon Hydratation</title>
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div class="brand-mark" aria-hidden="true">💧</div>
+      <div>
+        <p class="eyebrow">MON SUIVI QUOTIDIEN</p>
+        <h1>Mon Hydratation</h1>
+        <p class="date" id="todayLabel">Aujourd’hui</p>
+      </div>
+    </header>
+
+    <section class="hero" aria-labelledby="progressTitle">
+      <div class="hero-head">
+        <div>
+          <p class="eyebrow">OBJECTIF DU JOUR</p>
+          <h2 id="progressTitle"><span id="consumedLitres">0</span> <small>/ <span id="goalLitres">3,0</span> L</small></h2>
+        </div>
+        <div class="percent" id="percent">0%</div>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="Progression de l'objectif" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="hero-foot">
+        <span id="remainingText">3 L restants</span>
+        <span id="glassSummary">0 verre</span>
+      </div>
+      <div class="water-art" aria-hidden="true"><span>💧</span><span>💧</span><span>💧</span></div>
+    </section>
+
+    <section class="panel" aria-labelledby="addTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">C’EST PARTI</p>
+          <h2 id="addTitle">Ajouter de l’eau</h2>
+        </div>
+        <label class="glass-select">Taille du verre
+          <select id="glassSize">
+            <option value="200">200 ml</option>
+            <option value="250">250 ml</option>
+            <option value="300">300 ml</option>
+            <option value="500">500 ml</option>
+          </select>
+        </label>
+      </div>
+      <button class="add-button" id="addGlass" type="button">
+        <span class="plus">＋</span>
+        <span><strong>J’ai bu un verre</strong><small id="addButtonDetail">Ajouter 200 ml</small></span>
+      </button>
+      <div class="quick-actions">
+        <button type="button" class="secondary-button" id="undoGlass" disabled>↶ Annuler le dernier</button>
+        <button type="button" class="secondary-button" id="addBottle">＋ 500 ml</button>
+      </div>
+    </section>
+
+    <section class="panel settings" aria-labelledby="settingsTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">À TON RYTHME</p>
+          <h2 id="settingsTitle">Mon objectif</h2>
+        </div>
+      </div>
+      <div class="goal-options" role="group" aria-label="Choisir un objectif quotidien">
+        <button type="button" data-goal="3000" class="goal-option"><strong>3 L</strong><span>15 verres de 200 ml</span></button>
+        <button type="button" data-goal="3500" class="goal-option"><strong>3,5 L</strong><span>Objectif intermédiaire</span></button>
+        <button type="button" data-goal="4000" class="goal-option"><strong>4 L</strong><span>20 verres de 200 ml</span></button>
+      </div>
+      <p class="hint">L’objectif et la taille des verres sont enregistrés sur cet appareil.</p>
+    </section>
+
+    <section class="panel history" aria-labelledby="historyTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">AUJOURD’HUI</p>
+          <h2 id="historyTitle">Mes verres</h2>
+        </div>
+        <span class="history-count" id="historyCount">0</span>
+      </div>
+      <div id="glassHistory" class="glass-history">
+        <p class="empty-state">Tes verres apparaîtront ici. À toi de jouer !</p>
+      </div>
+      <button type="button" class="reset-button" id="resetDay">Réinitialiser le compteur du jour</button>
+    </section>
+
+    <footer>
+      <p>Bois régulièrement et écoute ta soif. Tes besoins varient selon ton activité, la chaleur et ta transpiration. Ne te force pas à boire rapidement de grandes quantités.</p>
+      <p class="privacy">🔒 Tes données restent dans le stockage local de ce navigateur.</p>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="./app.js" defer></script>
+</body>
+</html>
